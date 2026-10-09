@@ -1,0 +1,19 @@
+from __future__ import annotations
+
+from typing import Optional, Protocol
+
+from .session import ParkingSession
+from .spot import ParkingSpot
+from .value_objects import SessionId, SpotId
+
+
+class ParkingSpotRepository(Protocol):
+    def get(self, spot_id: SpotId) -> Optional[ParkingSpot]: ...
+    def save(self, spot: ParkingSpot) -> None: ...
+    def add(self, spot: ParkingSpot) -> None: ...
+
+
+class ParkingSessionRepository(Protocol):
+    def get(self, session_id: SessionId) -> Optional[ParkingSession]: ...
+    def save(self, session: ParkingSession) -> None: ...
+    def add(self, session: ParkingSession) -> None: ...

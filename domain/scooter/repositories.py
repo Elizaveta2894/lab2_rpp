@@ -1,0 +1,19 @@
+from __future__ import annotations
+
+from typing import Optional, Protocol
+
+from .scooter import Scooter
+from .trip import Trip
+from .value_objects import ScooterId, TripId
+
+
+class ScooterRepository(Protocol):
+    def get(self, scooter_id: ScooterId) -> Optional[Scooter]: ...
+    def save(self, scooter: Scooter) -> None: ...
+    def add(self, scooter: Scooter) -> None: ...
+
+
+class TripRepository(Protocol):
+    def get(self, trip_id: TripId) -> Optional[Trip]: ...
+    def save(self, trip: Trip) -> None: ...
+    def add(self, trip: Trip) -> None: ...
